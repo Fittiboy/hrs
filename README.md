@@ -18,4 +18,4 @@ if [[ $? -eq 0 ]]; then
 fi
 ```
 This allows you to call `. rproj --temp parser_testing` to immediately jump to your project directory and start editing `src/main.rs`.  
-Since changing directory is finnicky, I am fairly certain that you have to use `. rproj` instead of `rproj`, so it might make sense to alias this!
+Since changing directory is finicky, I am fairly certain that you have to use `. rproj` instead of `rproj`, so it might make sense to alias this!
