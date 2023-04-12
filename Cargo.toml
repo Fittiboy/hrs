@@ -2,8 +2,16 @@
 name = "hrs"
 version = "0.1.0"
 edition = "2021"
+authors = ["Fitti <dev@fitti.io>"]
+description = "A tiny tool to create Rust projects even faster."
+repository = "https://github.com/Fittiboy/hrs"
+license = "GPL-3.0-or-later"
+keywords = ["utility", "projects", "command-line"]
+categories = ["command-line-utilities", "filesystem"]
+edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "hrs"
 
 [dependencies]
 clap = "4.2.1"
