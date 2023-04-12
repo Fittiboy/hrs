@@ -6,7 +6,8 @@ Use `--temp` to make it entirely throwaway, `--hack` for small hacky testing pro
 `cargo install hrs`
 
 ## Tips for using
-This spits out the directory of the project it creates. You can use this to get started even quicker with `cd $(hrs --temp parser_testing)`, or a shell script like this:  
+This spits out the directory of the project it creates. Get started even quicker with `cd $(hrs --temp parser_testing)`, or a shell script like this:  
+
 `rproj`
 ```sh
 #!/bin/sh
