@@ -8,7 +8,6 @@ repository = "https://github.com/Fittiboy/hrs"
 license = "GPL-3.0-or-later"
 keywords = ["utility", "projects", "command-line"]
 categories = ["command-line-utilities", "filesystem"]
-edition = "2021"
 
 [[bin]]
 name = "hrs"
