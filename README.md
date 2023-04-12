@@ -1,7 +1,19 @@
 # h(acks in)r(u)s(t)
 For when you just need to hack together a quick project for testing.  
-Use `--temp` to make it entirely throwaway, `--hack` for small hacky testing projects, or without either flag to add it to your default projects folder.
+Use `--temp` to make it entirely throwaway, `--hack` for small hacky testing projects, or without either flag to add it to your default projects folder.  
 
+## Installation
+`cargo install hrs`
+
+Running it for the first time will create a default "[CONFIG_DIR](https://docs.rs/dirs/latest/dirs/fn.config_dir.html)/hrs/hrs.conf" file that looks like this:
+```
+# hrs.conf
+projects_dir = "HOME_DIR/projects"
+hacks_dir = "HOME_DIR/projects/hacks"
+```
+where `HOME_DIR` is your [home directory](https://docs.rs/dirs/latest/dirs/fn.home_dir.html).  
+
+## Usage
 ```
 Usage: hrs [OPTIONS] <name>
 
@@ -13,9 +25,6 @@ Options:
   -k, --hack  Create the project in your folder for small test projects
   -h, --help  Print help
 ```
-
-## Installation
-`cargo install hrs`
 
 ## Tips for using
 This spits out the directory of the project it creates. Get started even quicker with `cd $(hrs --temp parser_testing)`, or a shell script like this:  
