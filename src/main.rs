@@ -3,7 +3,17 @@ use std::env;
 use std::path::{Path, PathBuf};
 use std::process;
 
+use hrs::Config;
+
 fn main() {
+    let config = match Config::load() {
+        Ok(config) => config,
+        Err(_) => {
+            let config = Config::default();
+            config.write().unwrap();
+            config
+        }
+    };
     let cmd = Command::new("hack").args(&[
         arg!(<name> "The name of the project"),
         arg!(-t - -temp "Create the project in the OS's temporary directory"),
@@ -15,11 +25,10 @@ fn main() {
     let hack = *matches.get_one::<bool>("hack").unwrap();
     let mut path = if temp {
         env::temp_dir()
+    } else if hack {
+        config.hacks_dir
     } else {
-        dirs::home_dir()
-            .unwrap()
-            .join("projects")
-            .join(if hack { "hacks" } else { "" })
+        config.projects_dir
     };
     change_dir(&path);
     path = path.join(name);
