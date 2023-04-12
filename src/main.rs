@@ -7,7 +7,7 @@ fn main() {
     let cmd = Command::new("hack").args(&[
         arg!(<name> "The name of the hack"),
         arg!(-t - -temp),
-        arg!(-h - -hack),
+        arg!(-k - -hack),
     ]);
     let matches = cmd.get_matches();
     let name = matches.get_one::<String>("name").unwrap();
