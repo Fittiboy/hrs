@@ -13,14 +13,14 @@ fn main() {
     let name = matches.get_one::<String>("name").unwrap();
     let temp = *matches.get_one::<bool>("temp").unwrap();
     let hack = *matches.get_one::<bool>("hack").unwrap();
-    let mut path = Path::new("/").join(if temp {
-        "tmp".into()
+    let mut path = if temp {
+        env::temp_dir()
     } else {
         dirs::home_dir()
             .unwrap()
             .join("projects")
             .join(if hack { "hacks" } else { "" })
-    });
+    };
     change_dir(&path);
     path = path.join(name);
     make_hack(&path);
