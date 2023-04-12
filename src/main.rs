@@ -5,9 +5,9 @@ use std::process;
 
 fn main() {
     let cmd = Command::new("hack").args(&[
-        arg!(<name> "The name of the hack"),
-        arg!(-t - -temp),
-        arg!(-k - -hack),
+        arg!(<name> "The name of the project"),
+        arg!(-t - -temp "Create the project in the OS's temporary directory"),
+        arg!(-k - -hack "Create the project in your folder for small test projects"),
     ]);
     let matches = cmd.get_matches();
     let name = matches.get_one::<String>("name").unwrap();
