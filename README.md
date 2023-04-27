@@ -31,11 +31,13 @@ This spits out the directory of the project it creates. Get started even quicker
 ```sh
 # rproj
 #!/bin/sh
+#!/bin/sh
 directory=$(hrs $@)
 if [[ $? -eq 0 ]]; then
     cd $directory
-    vim src/main.rs
+    vim $(find src -name "*.rs")
 fi
+
 ```
 This allows you to call `. rproj --temp parser_testing` to immediately jump to your project directory and start editing `src/main.rs`.  
 Since changing directory is finicky, I am fairly certain that you have to use `. rproj` instead of `rproj`, so it might make sense to alias this!
