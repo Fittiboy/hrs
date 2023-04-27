@@ -1,18 +1,19 @@
 use clap::{arg, Command};
 use std::env;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::process;
 
-use hrs::Config;
+mod utils;
+
+use utils::Config;
 
 fn main() {
-    let config = match Config::load() {
-        Ok(config) => config,
-        Err(_) => {
-            let config = Config::default();
-            config.write().unwrap();
-            config
-        }
+    let config = if let Ok(config) = Config::load() {
+        config
+    } else {
+        let config = Config::default();
+        config.write().unwrap();
+        config
     };
     let cmd = Command::new("hack").args(&[
         arg!(<name> "The name of the project"),
@@ -36,15 +37,15 @@ fn main() {
     println!("{}", path.to_str().unwrap());
 }
 
-fn make_hack(path: &PathBuf) {
-    if !path.try_exists().unwrap() {
+fn make_hack(path: &Path) {
+    if path.try_exists().unwrap() {
+        panic!("directory already exists");
+    } else {
         process::Command::new("cargo")
             .arg("new")
             .arg(path.file_name().unwrap())
             .output()
             .unwrap();
-    } else {
-        panic!("directory already exists");
     };
 }
 
